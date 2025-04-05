@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles/homestyles.css">
+    <style>
+        /* Admin Button Container */
+        .admin-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        /* Admin Buttons Styled Like Card Buttons */
+        .admin-card {
+            text-align: center;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .admin-card img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 8px;
+        }
+
+        .admin-card button {
+            margin-top: 15px;
+            background-color: #00cabc;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 8px;
+            width: 100%;
+        }
+
+        .admin-card button:hover {
+            background-color: #009e99;
+        }
+
+        .admin-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Menu -->
+    <div id="menu">
+        <div class="menu-button" onclick="toggleMenu()">
+            <img src="photos/hamburger.webp" alt="Menu Button">
+        </div>
+        <ul id="menu-items">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="admin-dashboard.html">Admin Home</a></li>
+            <li><a href="admin-roster.html">Admin Roster</a></li>
+            <li><a href="admin-schedule.html">Admin Schedule</a></li>
+            <li><a href="admin-stats.html">Admin Statistics</a></li>
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <header>
+        Admin Dashboard
+        <img src="photos/wc-logo.png" alt="Wildcats Logo" class="header-logo">
+    </header>
+
+    <div class="admin-container">
+        <h2>Admin Controls</h2>
+        
+        <!-- Admin Navigation Buttons -->
+        <div class="admin-buttons">
+            <div class="admin-card">
+                <img src="photos/wc-roster.jpg" alt="Roster">
+                <button onclick="location.href='admin-roster.html'">Manage Roster</button>
+            </div>
+            <div class="admin-card">
+                <img src="photos/wc-schedule.jpg" alt="Schedule">
+                <button onclick="location.href='admin-schedule.html'">Manage Schedule</button>
+            </div>
+            <div class="admin-card">
+                <img src="photos/wc-statistics.jpg" alt="Statistics">
+                <button onclick="location.href='admin-stats.html'">Manage Statistics</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('expanded');
+        }
+    </script>
+    <script src="scripts/auth.js"></script>
+
+</body>
+</html>

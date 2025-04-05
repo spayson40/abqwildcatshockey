@@ -1,0 +1,31 @@
+/* Statistics Table Styling */
+.stats-container {
+    width: 90%;
+    margin: 40px auto;
+    text-align: center;
+}
+
+/* Center the Table */
+table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse; /* Ensures proper grid lines */
+}
+
+/* Table Borders for a Grid Effect */
+th, td {
+    border: 2px solid #00cabc; /* Grid lines */
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #00cabc;
+    color: white;
+    font-size: 18px;
+}
+
+/* Add Spacing Above the Table */
+.stats-container h2 {
+    margin-bottom: 15px;
+}

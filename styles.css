@@ -1,0 +1,62 @@
+/* General body styling */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5dc; /* Cream white background */
+    font-family: Arial, sans-serif;
+    display: flex;
+}
+
+/* Sidebar Menu */
+#menu {
+    width: 50px; /* Start collapsed size */
+    height: 100vh;
+    background-color: #add8e6; /* Light blue */
+    transition: width 0.3s ease;
+    overflow: hidden;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Sidebar Menu Expanded */
+#menu.expanded {
+    width: 15%; /* Expand to 15% of the screen */
+}
+
+/* Placeholder for menu button */
+#menu img {
+    width: 30px; /* Fixed size for the menu icon */
+    height: auto;
+    margin: 20px auto;
+}
+
+/* Main content styling */
+#content {
+    margin-left: 50px; /* Adjusted for the initial collapsed menu size */
+    padding: 20px;
+    flex-grow: 1;
+    transition: margin-left 0.3s ease; /* Smooth transition when content moves */
+}
+
+/* Adjust content when menu is expanded */
+#content.expanded {
+    margin-left: 15%; /* Adjust the content's margin when menu expands */
+}
+
+/* Menu Button Styling */
+.menu-button {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Placeholder for menu button image */
+.menu-button img {
+    max-width: 100%;
+    height: auto;
+}
+

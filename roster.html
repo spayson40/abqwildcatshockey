@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albuquerque Wildcats - Roster</title>
+    <link rel="stylesheet" href="styles/homestyles.css">
+    <link rel="stylesheet" href="styles/rostertable.css">
+</head>
+<body>
+
+    <!-- Sidebar Menu -->
+    <div id="menu">
+        <div class="menu-button" onclick="toggleMenu()">
+            <img src="photos/hamburger.webp" alt="Menu Button">
+        </div>
+        <ul id="menu-items">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="schedule.html">Schedule</a></li>
+            <li><a href="statistics.html">Statistics</a></li>
+            <li><a href="staff.html">Staff</a></li>
+            <li><a href="admin-login.html">Admin Login</a></li>
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <header>
+        Roster
+        <img src="photos/wc-logo.png" alt="Wildcats Logo" class="header-logo">
+    </header>
+
+    <!-- Roster Table -->
+    <div class="roster-container">
+        <h2>Team Roster</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Picture</th>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Hometown</th>
+                    <th>Birth Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Placeholder Data -->
+                <tr>
+                    <td><img src="photos/player-placeholder.jpg" alt="Player 1"></td>
+                    <td>9</td>
+                    <td>Example Person</td>
+                    <td>Albuquerque, NM</td>
+                    <td>2000</td>
+                </tr>
+                <tr>
+                    <td><img src="photos/player-placeholder.jpg" alt="Player 2"></td>
+                    <td>15</td>
+                    <td>Charles Smith</td>
+                    <td>Denver, CO</td>
+                    <td>1998</td>
+                </tr>
+                <tr>
+                    <td><img src="photos/player-placeholder.jpg" alt="Player 3"></td>
+                    <td>22</td>
+                    <td>Mike Crosby</td>
+                    <td>Phoenix, AZ</td>
+                    <td>2001</td>
+                </tr>
+                <!-- More rows will be dynamically generated -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('expanded');
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <p>Wildcats Hockey</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/yourprofile" target="_blank">Instagram</a>
+            <a href="https://www.x.com/yourprofile" target="_blank">X</a>
+            <a href="https://www.facebook.com/yourprofile" target="_blank">Facebook</a>
+        </div>
+        <img src="photos/wc-logo.png" alt="Wildcats Logo" class="footer-logo">
+    </footer>
+
+</body>
+</html>

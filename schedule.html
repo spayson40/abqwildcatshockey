@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albuquerque Wildcats - Schedule</title>
+    <link rel="stylesheet" href="styles/homestyles.css">
+    <link rel="stylesheet" href="styles/scheduletable.css"> <!-- Schedule-specific styles -->
+</head>
+<body>
+
+    <!-- Sidebar Menu -->
+    <div id="menu">
+        <div class="menu-button" onclick="toggleMenu()">
+            <img src="photos/hamburger.webp" alt="Menu Button">
+        </div>
+        <ul id="menu-items">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="schedule.html">Schedule</a></li>
+            <li><a href="statistics.html">Statistics</a></li>
+            <li><a href="staff.html">Staff</a></li>
+            <li><a href="admin-login.html">Admin Login</a></li>   
+         </ul>
+    </div>
+
+    <!-- Header -->
+    <header>
+        Schedule
+        <img src="photos/wc-logo.png" alt="Team Logo" class="header-logo">
+    </header>
+
+    <!-- Team Record Section -->
+    <div class="record-container">
+        <h2>Team Record: <span id="team-record">0 - 0</span></h2> <!-- Placeholder -->
+    </div>
+
+    <!-- Schedule Table -->
+    <div class="schedule-container">
+        <h2>Game Schedule</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Game Date</th>
+                    <th>Time</th>
+                    <th>Opponent</th>
+                    <th>Location</th>
+                    <th>Win/Loss</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Placeholder rows -->
+                <tr>
+                    <td>March 10, 2025</td>
+                    <td>7:00 PM</td>
+                    <td>Denver Falcons</td>
+                    <td>Denver, CO</td>
+                    <td>Win</td>
+                    <td>4 - 2</td>
+                </tr>
+                <tr>
+                    <td>March 15, 2025</td>
+                    <td>6:30 PM</td>
+                    <td>Santa Fe Wolves</td>
+                    <td>Santa Fe, NM</td>
+                    <td>Loss</td>
+                    <td>3 - 5</td>
+                </tr>
+                <tr>
+                    <td>April 2, 2025</td>
+                    <td>6:30 PM</td>
+                    <td>Santa Fe Wolves</td>
+                    <td>Albuquerque, NM</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('expanded');
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <p>Wildcats Hockey</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/yourprofile" target="_blank">Instagram</a>
+            <a href="https://www.x.com/yourprofile" target="_blank">X</a>
+            <a href="https://www.facebook.com/yourprofile" target="_blank">Facebook</a>
+        </div>
+        <img src="photos/wc-logo.png" alt="Team Logo" class="footer-logo">
+    </footer>
+
+</body>
+</html>

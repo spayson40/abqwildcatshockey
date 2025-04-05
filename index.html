@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albuquerque Wildcats - Home</title>
+    <link rel="stylesheet" href="styles/homestyles.css">
+</head>
+<body>
+
+    <!-- Sidebar Menu -->
+    <div id="menu">
+        <div class="menu-button" onclick="toggleMenu()">
+            <img src="photos/hamburger.webp" alt="Menu Button">
+        </div>
+        <ul id="menu-items">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="schedule.html">Schedule</a></li>
+            <li><a href="statistics.html">Statistics</a></li>
+            <li><a href="staff.html">Staff</a></li>
+            <li><a href="admin-login.html">Admin Login</a></li>
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <header>
+        Home
+        <img src="photos/wc-logo.png" alt="Wildcats Logo" class="header-logo">
+    </header>
+
+    <div class="wide-image">
+        <br>
+        <img src="photos/wc-action.jpg" alt="Action Shot of Wildcats" />
+    </div>
+    
+    <!-- Welcome -->
+    <div class="welcome">
+        Welcome to the home of the <strong>Albuquerque Wildcats!</strong>
+    </div>
+
+    <!-- Cards -->
+    <div class="card-container">
+        <div class="card">
+            <img src="photos/wc-schedule.jpg" alt="Schedule">
+            <button onclick="location.href='schedule.html'">Schedule</button>
+        </div>
+        <div class="card">
+            <img src="photos/wc-roster.jpg" alt="Roster">
+            <button onclick="location.href='roster.html'">Roster</button>
+        </div>
+        <div class="card">
+            <img src="photos/wc-statistics.jpg" alt="Statistics">
+            <button onclick="location.href='statistics.html'">Statistics</button>
+        </div>
+        <div class="card">
+            <img src="photos/wc-staff.jpg" alt="Staff">
+            <button onclick="location.href='staff.html'">Staff</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('expanded');
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <p>Wildcats Hockey</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/yourprofile" target="_blank">Instagram</a>
+            <a href="https://www.x.com/yourprofile" target="_blank">X</a>
+            <a href="https://www.facebook.com/yourprofile" target="_blank">Facebook</a>
+        </div>
+        <img src="photos/wc-logo.png" alt="Wildcats Logo" class="footer-logo">
+    </footer>
+
+</body>
+</html>
