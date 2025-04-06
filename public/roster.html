@@ -42,30 +42,8 @@
                     <th>Birth Year</th>
                 </tr>
             </thead>
-            <tbody>
-                <!-- Placeholder Data -->
-                <tr>
-                    <td><img src="photos/player-placeholder.jpg" alt="Player 1"></td>
-                    <td>9</td>
-                    <td>Example Person</td>
-                    <td>Albuquerque, NM</td>
-                    <td>2000</td>
-                </tr>
-                <tr>
-                    <td><img src="photos/player-placeholder.jpg" alt="Player 2"></td>
-                    <td>15</td>
-                    <td>Charles Smith</td>
-                    <td>Denver, CO</td>
-                    <td>1998</td>
-                </tr>
-                <tr>
-                    <td><img src="photos/player-placeholder.jpg" alt="Player 3"></td>
-                    <td>22</td>
-                    <td>Mike Crosby</td>
-                    <td>Phoenix, AZ</td>
-                    <td>2001</td>
-                </tr>
-                <!-- More rows will be dynamically generated -->
+            <tbody id="roster-table-body">
+                <!-- Data will be loaded from the database -->
             </tbody>
         </table>
     </div>
@@ -75,6 +53,31 @@
             const menu = document.getElementById('menu');
             menu.classList.toggle('expanded');
         }
+
+        async function loadRoster() {
+            try {
+                const res = await fetch('/api/roster');
+                const players = await res.json();
+                const tbody = document.getElementById('roster-table-body');
+                tbody.innerHTML = '';
+
+                players.forEach(player => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td><img src="${player.photo || 'photos/nophoto.jpg'}" alt="${player.name}"></td>
+                        <td>${player.playernumber}</td>
+                        <td>${player.name}</td>
+                        <td>${player.hometown}</td>
+                        <td>${player.birthyear}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Error loading roster:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadRoster);
     </script>
 
     <!-- Footer -->
