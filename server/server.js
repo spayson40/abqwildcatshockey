@@ -2,6 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
@@ -9,7 +10,9 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public')); // Optional: to serve your frontend if needed
+
+// Serve static frontend files from /public
+app.use(express.static(path.join(__dirname, '../public')));
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI, {
@@ -21,14 +24,15 @@ mongoose.connect(process.env.MONGO_URI, {
     console.error('❌ MongoDB connection error:', err);
 });
 
-// Routes (you can split these into files later)
-app.get('/', (req, res) => {
-    res.send('Wildcats Hockey API is running 🏒');
-});
-
-// TODO: Add your route files here, e.g.
+// TODO: Add your API route files here
 // app.use('/api/roster', require('./routes/rosterRoutes'));
 
+// Fallback route: serve index.html for any unknown path (frontend routing)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/index.html'));
+});
+
+// Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`🚀 Server running on port ${PORT}`);
