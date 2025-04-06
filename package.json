@@ -2,9 +2,9 @@
   "name": "sports-team-manager",
   "version": "1.0.0",
   "description": "A full-stack sports team management app",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server/server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -13,3 +13,4 @@
     "mongoose": "^8.13.1"
   }
 }
+
