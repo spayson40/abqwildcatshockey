@@ -1,4 +1,11 @@
 {
+  "name": "sports-team-manager",
+  "version": "1.0.0",
+  "description": "A full-stack sports team management app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
