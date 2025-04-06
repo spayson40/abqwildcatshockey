@@ -1,4 +1,5 @@
 // public/scripts/admin.js
+// new comment
 
 // Check if the user is authenticated
 if (!sessionStorage.getItem("isAdmin")) {
