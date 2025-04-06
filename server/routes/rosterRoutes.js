@@ -13,8 +13,8 @@ const RosterSchema = new mongoose.Schema({
   photo: String
 });
 
-// Create the model
-const Player = mongoose.model('Player', RosterSchema);
+// Connect the schema to the correct collection name: "roster"
+const Player = mongoose.model('Player', RosterSchema, 'roster');
 
 // GET /api/roster - Fetch all players
 router.get('/', async (req, res) => {
