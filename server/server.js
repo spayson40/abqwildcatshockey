@@ -24,8 +24,9 @@ mongoose.connect(process.env.MONGO_URI, {
     console.error('❌ MongoDB connection error:', err);
 });
 
-// TODO: Add your API route files here
-// app.use('/api/roster', require('./routes/rosterRoutes'));
+// ✅ Import and use roster route
+const rosterRoutes = require('./routes/rosterRoutes');
+app.use('/api/roster', rosterRoutes);
 
 // Fallback route: serve index.html for any unknown path (frontend routing)
 app.get('*', (req, res) => {
