@@ -5,4 +5,5 @@ const AdminSchema = new mongoose.Schema({
   passwordHash: { type: String, required: true }
 });
 
+//comment
 module.exports = mongoose.model('Admin', AdminSchema);
