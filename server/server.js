@@ -28,6 +28,10 @@ mongoose.connect(process.env.MONGO_URI, {
 const rosterRoutes = require('./routes/rosterRoutes');
 app.use('/api/roster', rosterRoutes);
 
+//Admin authorization route
+const adminAuthRoutes = require('./routes/adminAuthRoutes');
+app.use('/api/admin', adminAuthRoutes);
+
 // Fallback route: serve index.html for any unknown path (frontend routing)
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/index.html'));
