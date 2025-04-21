@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="styles/homestyles.css">
     <link rel="stylesheet" href="styles/rostertable.css">
 </head>
+<script>
+    if (sessionStorage.getItem("isAdmin") !== "true") {
+      window.location.href = "admin-login.html";
+    }
+  </script>  
 <body>
 
     <!-- Sidebar Menu -->
