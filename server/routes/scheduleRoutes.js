@@ -12,13 +12,13 @@ const ScheduleSchema = new mongoose.Schema({
   score: String
 });
 
-// Create the model
-const Game = mongoose.model('Game', ScheduleSchema);
+// Create the model - NOTICE: Now correctly using 'Schedule' model name
+const Schedule = mongoose.model('Schedule', ScheduleSchema);
 
 // GET /api/schedule - Fetch all games
 router.get('/', async (req, res) => {
   try {
-    const games = await Game.find();
+    const games = await Schedule.find();
     res.json(games);
   } catch (err) {
     console.error('Error fetching schedule:', err);
@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
 // POST /api/schedule - Add a new game
 router.post('/', async (req, res) => {
   try {
-    const newGame = new Game(req.body);
+    const newGame = new Schedule(req.body);
     await newGame.save();
     res.status(201).json(newGame);
   } catch (err) {
@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
 // PUT /api/schedule/:id - Update a game
 router.put('/:id', async (req, res) => {
   try {
-    const updatedGame = await Game.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const updatedGame = await Schedule.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.json(updatedGame);
   } catch (err) {
     console.error('Error updating game:', err);
@@ -52,7 +52,7 @@ router.put('/:id', async (req, res) => {
 // DELETE /api/schedule/:id - Delete a game
 router.delete('/:id', async (req, res) => {
   try {
-    await Game.findByIdAndDelete(req.params.id);
+    await Schedule.findByIdAndDelete(req.params.id);
     res.json({ message: 'Game deleted' });
   } catch (err) {
     console.error('Error deleting game:', err);
