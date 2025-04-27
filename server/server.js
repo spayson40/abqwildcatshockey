@@ -28,7 +28,11 @@ mongoose.connect(process.env.MONGO_URI, {
 const rosterRoutes = require('./routes/rosterRoutes');
 app.use('/api/roster', rosterRoutes);
 
-//Admin authorization route
+// ✅ Import and use schedule route
+const scheduleRoutes = require('./routes/scheduleRoutes');
+app.use('/api/schedule', scheduleRoutes);
+
+// ✅ Admin authorization route
 const adminAuthRoutes = require('./routes/adminAuthRoutes');
 app.use('/api/admin', adminAuthRoutes);
 

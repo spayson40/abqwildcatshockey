@@ -97,5 +97,44 @@
         <img src="photos/wc-logo.png" alt="Team Logo" class="footer-logo">
     </footer>
 
+    <script>
+        async function loadSchedule() {
+          try {
+            const res = await fetch('/api/schedule');
+            const games = await res.json();
+            const tbody = document.querySelector('.schedule-container tbody');
+            tbody.innerHTML = '';
+      
+            games.forEach(game => {
+              const row = document.createElement('tr');
+              row.innerHTML = `
+                <td>${new Date(game.date).toLocaleDateString()}</td>
+                <td>${game.time}</td>
+                <td>${game.opponent}</td>
+                <td>${game.location}</td>
+                <td>${game.winloss || ''}</td>
+                <td>${game.score || ''}</td>
+              `;
+              tbody.appendChild(row);
+            });
+      
+            updateTeamRecord(games);
+          } catch (err) {
+            console.error('Error loading schedule:', err);
+          }
+        }
+      
+        function updateTeamRecord(games) {
+          let wins = 0;
+          let losses = 0;
+          games.forEach(game => {
+            if (game.winloss === 'Win') wins++;
+            if (game.winloss === 'Loss') losses++;
+          });
+          document.getElementById('team-record').innerText = `${wins} - ${losses}`;
+        }
+      
+        document.addEventListener('DOMContentLoaded', loadSchedule);
+      </script>
 </body>
 </html>
