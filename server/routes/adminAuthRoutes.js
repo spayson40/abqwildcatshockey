@@ -13,7 +13,7 @@ router.post('/login', async (req, res) => {
   const isMatch = await bcrypt.compare(password, user.passwordHash);
   if (!isMatch) return res.status(401).json({ message: 'Invalid credentials' });
 
-  // Set session in frontend — your logic may vary
+  // Set session in frontend 
   res.json({ message: 'Login successful' });
 });
 
