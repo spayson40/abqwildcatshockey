@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Albuquerque Wildcats - Schedule</title>
     <link rel="stylesheet" href="styles/homestyles.css">
-    <link rel="stylesheet" href="styles/scheduletable.css"> <!-- Schedule-specific styles -->
+    <link rel="stylesheet" href="styles/scheduletable.css">
 </head>
 <body>
 
-    <!-- Sidebar Menu 
-     extra comment for check git -->
+    <!-- Sidebar Menu -->
     <div id="menu">
         <div class="menu-button" onclick="toggleMenu()">
             <img src="photos/hamburger.webp" alt="Menu Button">
@@ -20,8 +19,8 @@
             <li><a href="roster.html">Roster</a></li>
             <li><a href="schedule.html">Schedule</a></li>
             <li><a href="staff.html">Staff</a></li>
-            <li><a href="admin-login.html">Admin Login</a></li>   
-         </ul>
+            <li><a href="admin-login.html">Admin Login</a></li>
+        </ul>
     </div>
 
     <!-- Header -->
@@ -32,16 +31,16 @@
 
     <!-- Team Record Section -->
     <div class="record-container">
-        <h2>Team Record: <span id="team-record">0 - 0</span></h2> <!-- Placeholder -->
+        <h2>Team Record: <span id="team-record">0 - 0</span></h2>
     </div>
 
     <!-- Schedule Table -->
     <div class="schedule-container">
-        <h2>schedule Schedule</h2>
+        <h2>Game Schedule</h2>
         <table>
             <thead>
                 <tr>
-                    <th>schedule Date</th>
+                    <th>Game Date</th>
                     <th>Time</th>
                     <th>Opponent</th>
                     <th>Location</th>
@@ -50,7 +49,7 @@
                 </tr>
             </thead>
             <tbody>
-                
+                <!-- Games will be loaded here -->
             </tbody>
         </table>
     </div>
@@ -60,6 +59,44 @@
             const menu = document.getElementById('menu');
             menu.classList.toggle('expanded');
         }
+
+        async function loadSchedule() {
+            try {
+                const res = await fetch('/api/schedule');
+                const schedules = await res.json();
+                const tbody = document.querySelector('.schedule-container tbody');
+                tbody.innerHTML = '';
+
+                schedules.forEach(schedule => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${new Date(schedule.date).toLocaleDateString()}</td>
+                        <td>${schedule.time}</td>
+                        <td>${schedule.opponent}</td>
+                        <td>${schedule.location}</td>
+                        <td>${schedule.winloss || ''}</td>
+                        <td>${schedule.score || ''}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+                updateTeamRecord(schedules);
+            } catch (err) {
+                console.error('Error loading schedule:', err);
+            }
+        }
+
+        function updateTeamRecord(schedules) {
+            let wins = 0;
+            let losses = 0;
+            schedules.forEach(schedule => {
+                if (schedule.winloss === 'Win') wins++;
+                if (schedule.winloss === 'Loss') losses++;
+            });
+            document.getElementById('team-record').innerText = `${wins} - ${losses}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', loadSchedule);
     </script>
 
     <!-- Footer -->
@@ -73,44 +110,6 @@
         <img src="photos/wc-logo.png" alt="Team Logo" class="footer-logo">
     </footer>
 
-    <script>
-        async function loadSchedule() {
-          try {
-            const res = await fetch('/api/schedule');
-            const schedules = await res.json();
-            const tbody = document.querySelector('.schedule-container tbody');
-            tbody.innerHTML = '';
-      
-            schedules.forEach(schedule => {
-              const row = document.createElement('tr');
-              row.innerHTML = `
-                <td>${new Date(schedule.date).toLocaleDateString()}</td>
-                <td>${schedule.time}</td>
-                <td>${schedule.opponent}</td>
-                <td>${schedule.location}</td>
-                <td>${schedule.winloss || ''}</td>
-                <td>${schedule.score || ''}</td>
-              `;
-              tbody.appendChild(row);
-            });
-      
-            updateTeamRecord(schedules);
-          } catch (err) {
-            console.error('Error loading schedule:', err);
-          }
-        }
-      
-        function updateTeamRecord(schedules) {
-          let wins = 0;
-          let losses = 0;
-          schedules.forEach(schedule => {
-            if (schedule.winloss === 'Win') wins++;
-            if (schedule.winloss === 'Loss') losses++;
-          });
-          document.getElementById('team-record').innerText = `${wins} - ${losses}`;
-        }
-      
-        document.addEventListener('DOMContentLoaded', loadSchedule);
-      </script>
 </body>
 </html>
+

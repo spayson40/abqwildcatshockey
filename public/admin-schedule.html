@@ -31,10 +31,10 @@
 
     <div class="admin-container">
         <h2>Manage Schedule</h2>
-        
+
         <!-- Add/Edit Game Form -->
         <form id="game-form">
-            <input type="hidden" id="gameId"> <!-- Hidden field for edit mode -->
+            <input type="hidden" id="gameId">
             <label>Date:</label> <input type="date" id="gameDate" required>
             <label>Time:</label> <input type="time" id="gameTime" required>
             <label>Opponent:</label> <input type="text" id="gameOpponent" required>
@@ -65,7 +65,7 @@
                     </tr>
                 </thead>
                 <tbody id="schedule-table-body">
-                    <!-- Data will be dynamically loaded from MongoDB -->
+                    <!-- Schedule data loaded here -->
                 </tbody>
             </table>
         </div>
