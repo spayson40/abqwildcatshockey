@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     players.forEach(player => {
       const row = document.createElement("tr");
       row.innerHTML = `
-        <td><img src="photos/${player.photo || 'nophoto.jpg'}" alt="${player.name}" width="50"/></td>
+        <td>${player.photo || 'nophoto.jpg'}</td> <!-- Only show filename -->
         <td>${player.playernumber}</td>
         <td>${player.name}</td>
         <td>${player.hometown}</td>
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
       name: form.playerName.value,
       hometown: form.playerHometown.value,
       birthyear: form.playerBirthYear.value,
-      photo: form.playerPicture.value || 'nophoto.jpg' // pull string value
+      photo: form.playerPicture.value || 'nophoto.jpg' // Save filename
     };
 
     if (editingId) {
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     form.playerName.value = player.name;
     form.playerHometown.value = player.hometown;
     form.playerBirthYear.value = player.birthyear;
-    form.playerPicture.value = player.photo || '';  // prefill filename
+    form.playerPicture.value = player.photo || '';  // Prefill filename
     editingId = id;
   };
 
