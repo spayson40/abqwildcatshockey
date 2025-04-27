@@ -37,11 +37,11 @@
 
     <!-- Schedule Table -->
     <div class="schedule-container">
-        <h2>Game Schedule</h2>
+        <h2>schedule Schedule</h2>
         <table>
             <thead>
                 <tr>
-                    <th>Game Date</th>
+                    <th>schedule Date</th>
                     <th>Time</th>
                     <th>Opponent</th>
                     <th>Location</th>
@@ -77,35 +77,35 @@
         async function loadSchedule() {
           try {
             const res = await fetch('/api/schedule');
-            const games = await res.json();
+            const schedules = await res.json();
             const tbody = document.querySelector('.schedule-container tbody');
             tbody.innerHTML = '';
       
-            games.forEach(game => {
+            schedules.forEach(schedule => {
               const row = document.createElement('tr');
               row.innerHTML = `
-                <td>${new Date(game.date).toLocaleDateString()}</td>
-                <td>${game.time}</td>
-                <td>${game.opponent}</td>
-                <td>${game.location}</td>
-                <td>${game.winloss || ''}</td>
-                <td>${game.score || ''}</td>
+                <td>${new Date(schedule.date).toLocaleDateString()}</td>
+                <td>${schedule.time}</td>
+                <td>${schedule.opponent}</td>
+                <td>${schedule.location}</td>
+                <td>${schedule.winloss || ''}</td>
+                <td>${schedule.score || ''}</td>
               `;
               tbody.appendChild(row);
             });
       
-            updateTeamRecord(games);
+            updateTeamRecord(schedules);
           } catch (err) {
             console.error('Error loading schedule:', err);
           }
         }
       
-        function updateTeamRecord(games) {
+        function updateTeamRecord(schedules) {
           let wins = 0;
           let losses = 0;
-          games.forEach(game => {
-            if (game.winloss === 'Win') wins++;
-            if (game.winloss === 'Loss') losses++;
+          schedules.forEach(schedule => {
+            if (schedule.winloss === 'Win') wins++;
+            if (schedule.winloss === 'Loss') losses++;
           });
           document.getElementById('team-record').innerText = `${wins} - ${losses}`;
         }
