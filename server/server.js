@@ -24,15 +24,20 @@ mongoose.connect(process.env.MONGO_URI, {
     console.error('❌ MongoDB connection error:', err);
 });
 
-// ✅ Import and use roster route
+// Import and use roster route
 const rosterRoutes = require('./routes/rosterRoutes');
 app.use('/api/roster', rosterRoutes);
 
-// ✅ Import and use schedule route
+// Import and use schedule route
 const scheduleRoutes = require('./routes/scheduleRoutes');
 app.use('/api/schedule', scheduleRoutes);
 
-// ✅ Admin authorization route
+//Import and use staff route
+const staffRoutes = require('./routes/staffRoutes');
+app.use('/api/staff', staffRoutes);
+
+
+// Admin authorization route
 const adminAuthRoutes = require('./routes/adminAuthRoutes');
 app.use('/api/admin', adminAuthRoutes);
 

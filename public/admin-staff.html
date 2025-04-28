@@ -1,77 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - Manage Roster</title>
-    <link rel="stylesheet" href="styles/homestyles.css">
-    <link rel="stylesheet" href="styles/rostertable.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard - Manage Staff</title>
+  <link rel="stylesheet" href="styles/homestyles.css" />
+  <link rel="stylesheet" href="styles/rostertable.css" />
 </head>
 <body>
 
-    <!-- Sidebar Menu -->
-    <div id="menu">
-        <div class="menu-button" onclick="toggleMenu()">
-            <img src="photos/hamburger.webp" alt="Menu Button">
-        </div>
-        <ul id="menu-items">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="admin-dashboard.html">Admin Home</a></li>
-            <li><a href="admin-roster.html">Admin Roster</a></li>
-            <li><a href="admin-schedule.html">Admin Schedule</a></li>
-            <li><a href="admin-stats.html">Admin Statistics</a></li>
-        </ul>
+  <!-- Sidebar Menu -->
+  <div id="menu">
+    <div class="menu-button" onclick="toggleMenu()">
+      <img src="photos/hamburger.webp" alt="Menu Button">
     </div>
+    <ul id="menu-items">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="admin-dashboard.html">Admin Home</a></li>
+      <li><a href="admin-roster.html">Admin Roster</a></li>
+      <li><a href="admin-schedule.html">Admin Schedule</a></li>
+      <li><a href="admin-staff.html">Admin Staff</a></li>
+    </ul>
+  </div>
 
-    <!-- Header -->
-    <header>
-        Admin Dashboard
-        <img src="photos/wc-logo.png" alt="Wildcats Logo" class="header-logo">
-    </header>
+  <!-- Header -->
+  <header>
+    Admin Dashboard
+    <img src="photos/wc-logo.png" alt="Wildcats Logo" class="header-logo">
+  </header>
 
-    <div class="admin-container">
-        <h2>Manage Roster</h2>
-        
-        <!-- Add/Edit Player Form -->
-        <form id="player-form">
-            <input type="hidden" id="playerId"> <!-- Hidden field for edit mode -->
-            <label>Player Picture:</label> <input type="file" id="playerPicture">
-            <label>Number:</label> <input type="number" id="playerNumber">
-            <label>Name:</label> <input type="text" id="playerName">
-            <label>Hometown:</label> <input type="text" id="playerHometown">
-            <label>Birth Year:</label> <input type="number" id="playerBirthYear">
-            <button type="submit">Save Player</button>
-        </form>
+  <div class="admin-container">
+    <h2>Manage Staff</h2>
 
-        <!-- Roster Table -->
-        <div class="roster-container">
-            <h2>Roster List</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Picture</th>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Hometown</th>
-                        <th>Birth Year</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="roster-table-body">
-                    <!-- Data will be dynamically loaded from MongoDB -->
-                </tbody>
-            </table>
-        </div>
+    <!-- Add/Edit Staff Form -->
+    <form id="staff-form">
+      <input type="hidden" id="staffId"> <!-- Hidden field for edit mode -->
+      <label>Photo (filename only):</label> <input type="text" id="staffPicture">
+      <label>Position:</label> <input type="text" id="staffPosition" required>
+      <label>Name:</label> <input type="text" id="staffName" required>
+      <label>Hometown:</label> <input type="text" id="staffHometown" required>
+      <label>Email:</label> <input type="email" id="staffEmail" required>
+      <button type="submit">Save Staff</button>
+    </form>
+
+    <!-- Staff Table -->
+    <div class="roster-container">
+      <h2>Staff List</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Photo</th>
+            <th>Position</th>
+            <th>Name</th>
+            <th>Hometown</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="staff-table-body">
+          <!-- Data will be dynamically loaded from MongoDB -->
+        </tbody>
+      </table>
     </div>
+  </div>
 
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.classList.toggle('expanded');
-        }
-    </script>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('expanded');
+    }
+  </script>
 
-    <script src="scripts/auth.js"></script>
-    <script src="scripts/admin.js"></script>
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/admin.js"></script>
+  <script src="scripts/admin-staff.js"></script>
 </body>
 </html>

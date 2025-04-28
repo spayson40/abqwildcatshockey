@@ -1,84 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Albuquerque Wildcats - Staff</title>
-    <link rel="stylesheet" href="styles/homestyles.css">
-    <link rel="stylesheet" href="styles/rostertable.css"> <!-- New CSS file for the table -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Albuquerque Wildcats - Staff</title>
+  <link rel="stylesheet" href="styles/homestyles.css" />
+  <link rel="stylesheet" href="styles/rostertable.css" />
 </head>
 <body>
 
-    <!-- Sidebar Menu -->
-    <div id="menu">
-        <div class="menu-button" onclick="toggleMenu()">
-            <img src="photos/hamburger.webp" alt="Menu Button">
-        </div>
-        <ul id="menu-items">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="roster.html">Roster</a></li>
-            <li><a href="schedule.html">Schedule</a></li>
-            <li><a href="staff.html">Staff</a></li>
-            <li><a href="admin-login.html">Admin Login</a></li>
-        </ul>
+  <!-- Sidebar Menu -->
+  <div id="menu">
+    <div class="menu-button" onclick="toggleMenu()">
+      <img src="photos/hamburger.webp" alt="Menu Button">
     </div>
+    <ul id="menu-items">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="roster.html">Roster</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="staff.html">Staff</a></li>
+      <li><a href="admin-login.html">Admin Login</a></li>
+    </ul>
+  </div>
 
-    <!-- Header -->
-    <header>
-        Staff
-        <img src="photos/wc-logo.png" alt="Team Logo" class="header-logo">
-    </header>
+  <!-- Header -->
+  <header>
+    Staff
+    <img src="photos/wc-logo.png" alt="Team Logo" class="header-logo">
+  </header>
 
-    <!-- Staff Table -->
-    <div class="staff-container">
-        <h2>Meet Our Coaching Staff</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Picture</th>
-                    <th>Position</th>
-                    <th>Name</th>
-                    <th>Hometown</th>
-                    <th>Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Placeholder rows for now -->
-                <tr>
-                    <td><img src="photos/placeholder.jpg" alt="Staff Photo"></td>
-                    <td>Head Coach</td>
-                    <td>John DeCoach</td>
-                    <td>Albuquerque, NM</td>
-                    <td><a href="mailto:johndoe@email.com">johndoe@email.com</a></td>
-                </tr>
-                <tr>
-                    <td><img src="photos/placeholder.jpg" alt="Staff Photo"></td>
-                    <td>Assistant Coach</td>
-                    <td>Jack Couch</td>
-                    <td>Santa Fe, NM</td>
-                    <td><a href="mailto:janesmith@email.com">janesmith@email.com</a></td>
-                </tr>
-            </tbody>
-        </table>
+  <!-- Staff Table -->
+  <div class="staff-container">
+    <h2>Meet Our Coaching Staff</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Picture</th>
+          <th>Position</th>
+          <th>Name</th>
+          <th>Hometown</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody id="staff-table-body">
+        <!-- Dynamic data loads here -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('expanded');
+    }
+
+    async function loadStaff() {
+      try {
+        const res = await fetch('/api/staff');
+        const staff = await res.json();
+        const tbody = document.getElementById('staff-table-body');
+        tbody.innerHTML = '';
+
+        staff.forEach(member => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td><img src="${member.photo || 'photos/nophoto.jpg'}" alt="${member.name}" width="50"></td>
+            <td>${member.position}</td>
+            <td>${member.name}</td>
+            <td>${member.hometown}</td>
+            <td><a href="mailto:${member.email}">${member.email}</a></td>
+          `;
+          tbody.appendChild(row);
+        });
+      } catch (error) {
+        console.error('Error loading staff:', error);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadStaff);
+  </script>
+
+  <!-- Footer -->
+  <footer>
+    <p>Wildcats Hockey</p>
+    <div class="social-links">
+      <a href="https://www.instagram.com/yourprofile" target="_blank">Instagram</a>
+      <a href="https://www.x.com/yourprofile" target="_blank">X</a>
+      <a href="https://www.facebook.com/yourprofile" target="_blank">Facebook</a>
     </div>
-
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.classList.toggle('expanded');
-        }
-    </script>
-
-    <!-- Footer -->
-    <footer>
-        <p>Wildcats Hockey</p>
-        <div class="social-links">
-            <a href="https://www.instagram.com/yourprofile" target="_blank">Instagram</a>
-            <a href="https://www.x.com/yourprofile" target="_blank">X</a>
-            <a href="https://www.facebook.com/yourprofile" target="_blank">Facebook</a>
-        </div>
-        <img src="photos/wc-logo.png" alt="Team Logo" class="footer-logo">
-    </footer>
+    <img src="photos/wc-logo.png" alt="Team Logo" class="footer-logo">
+  </footer>
 
 </body>
 </html>
