@@ -25,14 +25,14 @@ body {
 }
 
 .menu-button {
-    position: fixed;
-    top: 10px;
-    left: 10px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
     background: #00cabc;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
-    z-index: 1100;
+    z-index: 1000;
 }
 
 .menu-button img {
