@@ -27,7 +27,7 @@ body {
 .menu-button {
     position: fixed;
     top: 10px;
-    right: 10px;
+    left: 10px;
     background: #00cabc;
     padding: 10px;
     border-radius: 5px;
