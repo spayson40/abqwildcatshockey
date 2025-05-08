@@ -6,11 +6,17 @@ body {
     text-align: center;
 }
 
+/* Ensure all images scale properly */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 /* Sidebar Menu */
 #menu {
     position: absolute;
     top: 0;
-    left: -200px; /* Hidden by default */
+    left: -200px;
     width: 200px;
     height: 100%;
     background-color: #00cabc;
@@ -20,7 +26,7 @@ body {
 }
 
 #menu.expanded {
-    left: 0; /* Show menu */
+    left: 0;
 }
 
 .menu-button {
@@ -61,20 +67,23 @@ header {
     font-size: 24px;
 }
 
-/* Header Logo (top right) */
+/* Header Logo */
 .header-logo {
     position: absolute;
     top: 10px;
     right: 10px;
-    width: 100px; /* Adjust size as needed */
+    width: 100px;
     height: auto;
 }
 
+/* Action Photo */
 .action-photo {
     max-width: 100%;
     height: auto;
-  }
-  
+    display: block;
+    margin: 0 auto;
+}
+
 /* Welcome Message */
 .welcome {
     font-size: 20px;
@@ -122,13 +131,14 @@ header {
 .card button:hover {
     background: #0055aa;
 }
-/* Footer styling */
+
+/* Footer Styling */
 footer {
     background-color: #00cabc;
     color: white;
     text-align: center;
     padding: 20px;
-    margin-top: 20px; /* Ensure footer stays below the content */
+    margin-top: 20px;
 }
 
 footer p {
@@ -152,111 +162,110 @@ footer .social-links a:hover {
     text-decoration: underline;
 }
 
+/* Footer Logo */
+.footer-logo {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 10px auto 0;
+}
+
 /* --------------------- */
 /* 📱 Mobile Styles */
 /* --------------------- */
 @media (max-width: 768px) {
     body {
-      font-size: 16px;
-      text-align: left;
-      padding: 10px;
-    }
-  
-    /* Sidebar Menu */
-    #menu {
-      width: 100%;
-      height: auto;
-      position: relative;
-      left: 0;
-      padding: 10px 0;
-    }
-  
-    .menu-button {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 1000;
-    }
-  
-    #menu-items {
-      display: none;
-      flex-direction: column;
-      background: #00cabc;
-      padding: 10px;
-    }
-  
-    #menu.expanded #menu-items {
-      display: flex;
-    }
-  
-    #menu-items li {
-      padding: 10px;
-      text-align: center;
-    }
-  
-    /* Header */
-    header {
-      font-size: 20px;
-      padding: 15px;
-    }
-  
-    .header-logo {
-      width: 70px;
-      top: 5px;
-      right: 5px;
-    }
-  
-    /* Cards */
-    .card-container {
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-    }
-  
-    .card {
-      width: 90%;
-      padding: 10px;
-    }
-  
-    .card img {
-      height: 150px;
-    }
-  
-    /* Footer */
-    footer p {
-      font-size: 16px;
-    }
-  
-    footer .social-links {
-      flex-direction: column;
-      gap: 5px;
-    }
-  
-    footer .footer-logo {
-      width: 80px;
-      height: auto;
-      margin-top: 5%;
-    }
-  
-    /* Tables - Make them scrollable */
-    table {
-      font-size: 14px;
-      display: block;
-      overflow-x: auto;
-      width: 100%;
-    }
-  
-    th, td {
-      padding: 8px;
-      white-space: nowrap;
+        font-size: 16px;
+        text-align: left;
+        padding: 10px;
     }
 
-    /* Fix footer logo scaling */
-    footer .footer-logo {
+    /* Sidebar Menu */
+    #menu {
+        width: 100%;
+        height: auto;
+        position: relative;
+        left: 0;
+        padding: 10px 0;
+    }
+
+    .menu-button {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1000;
+    }
+
+    #menu-items {
+        display: none;
+        flex-direction: column;
+        background: #00cabc;
+        padding: 10px;
+    }
+
+    #menu.expanded #menu-items {
+        display: flex;
+    }
+
+    #menu-items li {
+        padding: 10px;
+        text-align: center;
+    }
+
+    /* Header */
+    header {
+        font-size: 20px;
+        padding: 15px;
+    }
+
+    .header-logo {
+        width: 70px;
+        top: 5px;
+        right: 5px;
+    }
+
+    /* Cards */
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .card {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .card img {
+        height: 150px;
+    }
+
+    /* Footer */
+    footer p {
+        font-size: 16px;
+    }
+
+    footer .social-links {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .footer-logo {
         width: 80px;
         height: auto;
+        margin-top: 5%;
+    }
+
+    /* Tables */
+    table {
+        font-size: 14px;
         display: block;
-        margin: 10px auto 0;
+        overflow-x: auto;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        white-space: nowrap;
     }
 }
-  
