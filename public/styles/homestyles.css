@@ -69,6 +69,12 @@ header {
     width: 100px; /* Adjust size as needed */
     height: auto;
 }
+
+.action-photo {
+    max-width: 100%;
+    height: auto;
+  }
+  
 /* Welcome Message */
 .welcome {
     font-size: 20px;
@@ -228,7 +234,8 @@ footer .social-links a:hover {
   
     footer .footer-logo {
       width: 80px;
-      margin-top: 10px;
+      height: auto;
+      margin-top: 5%;
     }
   
     /* Tables - Make them scrollable */
@@ -243,5 +250,13 @@ footer .social-links a:hover {
       padding: 8px;
       white-space: nowrap;
     }
-  }
+
+    /* Fix footer logo scaling */
+    footer .footer-logo {
+        width: 80px;
+        height: auto;
+        display: block;
+        margin: 10px auto 0;
+    }
+}
   
