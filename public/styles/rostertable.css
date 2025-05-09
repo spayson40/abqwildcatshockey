@@ -37,3 +37,20 @@ td img {
 .roster-container h2 {
     margin-bottom: 15px;
 }
+
+/* Responsive table layout for mobile */
+@media (max-width: 768px) {
+    table {
+        width: 95%;
+    }
+
+    th, td {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    td img {
+        width: 50px;
+        height: 50px;
+    }
+}
