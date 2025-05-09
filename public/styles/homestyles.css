@@ -25,14 +25,14 @@ body {
 }
 
 .menu-button {
-    position: fixed;
+    position: absolute;
     top: 10px;
     left: 10px;
     background: #00cabc;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
-    z-index: 2000; 
+    z-index: 2000;
 }
 
 .menu-button img {
@@ -57,12 +57,18 @@ body {
 
 /* Header */
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     background-color: #00cabc;
     color: white;
     padding: 20px;
     font-size: 24px;
-    position: relative;
-    z-index: 1000;
+    z-index: 1500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .header-logo {
