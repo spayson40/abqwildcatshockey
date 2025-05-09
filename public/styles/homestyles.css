@@ -8,16 +8,16 @@ body {
 
 /* Sidebar Menu */
 #menu {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: -200px;
     width: 200px;
     height: 100%;
     background-color: #00cabc;
     color: white;
-    padding-top: 20px;
+    padding-top: 60px;
     transition: left 0.3s ease;
-    z-index: 1000;
+    z-index: 1500; 
 }
 
 #menu.expanded {
@@ -26,13 +26,13 @@ body {
 
 .menu-button {
     position: fixed;
-    top: 20px;
-    left: 20px;
+    top: 10px;
+    left: 10px;
     background: #00cabc;
     padding: 10px;
     border-radius: 5px;
-    cursor: pointer; 
-    z-index: 5000;
+    cursor: pointer;
+    z-index: 2000; 
 }
 
 .menu-button img {
