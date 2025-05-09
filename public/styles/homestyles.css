@@ -4,6 +4,50 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
+    padding-top: 70px; /* Make room for fixed header */
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #00cabc;
+    color: white;
+    font-size: 24px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+/* Header Logo (top right) */
+.header-logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 100px;
+    height: auto;
+}
+
+/* Menu Button */
+.menu-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #00cabc;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.menu-button img {
+    width: 30px;
+    height: 30px;
 }
 
 /* Sidebar Menu */
@@ -15,29 +59,13 @@ body {
     height: 100%;
     background-color: #00cabc;
     color: white;
-    padding-top: 60px;
+    padding-top: 70px; /* Offset for fixed header */
     transition: left 0.3s ease;
-    z-index: 1500; 
+    z-index: 900;
 }
 
 #menu.expanded {
     left: 0;
-}
-
-.menu-button {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: #00cabc;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 2000;
-}
-
-.menu-button img {
-    width: 30px;
-    height: 30px;
 }
 
 #menu-items {
@@ -53,30 +81,6 @@ body {
 #menu-items a {
     color: white;
     text-decoration: none;
-}
-
-/* Header */
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #00cabc;
-    color: white;
-    padding: 20px;
-    font-size: 24px;
-    z-index: 1500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.header-logo {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 100px;
-    height: auto;
 }
 
 /* Action Photo */
@@ -176,35 +180,7 @@ footer .footer-logo {
 @media (max-width: 768px) {
     body {
         font-size: 16px;
-        padding: 10px;
-    }
-
-    #menu {
-        width: 100%;
-        height: auto;
-        position: relative;
-        left: 0;
-    }
-
-    #menu-items {
-        display: none;
-        flex-direction: column;
-        background: #00cabc;
-        padding: 10px;
-    }
-
-    #menu.expanded #menu-items {
-        display: flex;
-    }
-
-    #menu-items li {
-        padding: 10px;
-        text-align: center;
-    }
-
-    header {
-        font-size: 20px;
-        padding: 15px;
+        padding-top: 70px;
     }
 
     .header-logo {
@@ -223,11 +199,6 @@ footer .footer-logo {
 
     .card img {
         height: 240px;
-    }
-
-    .wide-photo img.action-photo {
-        width: 100%;
-        height: auto;
     }
 
     footer .footer-logo {
