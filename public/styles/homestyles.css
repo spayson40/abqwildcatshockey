@@ -36,8 +36,8 @@ header {
 /* Menu Button */
 .menu-button {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 12px;
+    left: 15px;
     background: #00cabc;
     padding: 10px;
     border-radius: 5px;
