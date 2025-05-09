@@ -5,7 +5,7 @@
 }
 
 .record-container h2 {
-    font-size: 28px; /* Bigger and bolder */
+    font-size: 28px;
     color: #00cabc;
     font-weight: bold;
 }
@@ -22,16 +22,16 @@ table {
     width: 85%;
     margin: 0 auto;
     border-collapse: collapse;
-    background: #f8f9fa; /* Light background to stand out */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Slight shadow effect */
+    background: #f8f9fa;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Table Borders */
 th, td {
-    border: 3px solid #00cabc; /* Thicker grid lines for a bold look */
-    padding: 18px; /* Increased padding for thicker rows */
+    border: 3px solid #00cabc;
+    padding: 18px;
     text-align: center;
-    font-size: 20px; /* Larger text for readability */
+    font-size: 20px;
 }
 
 /* Header Styling */
@@ -44,7 +44,7 @@ th {
     padding: 20px;
 }
 
-/* Alternating Row Colors for Readability */
+/* Alternating Row Colors */
 tbody tr:nth-child(odd) {
     background-color: #e0f7f5;
 }
@@ -53,7 +53,7 @@ tbody tr:nth-child(even) {
     background-color: #ffffff;
 }
 
-/* Hover Effect for Interactive Feel */
+/* Hover Effect */
 tbody tr:hover {
     background-color: #d1eef0;
     transition: 0.3s ease;
@@ -66,4 +66,24 @@ tbody tr:hover {
     font-weight: bold;
     text-transform: uppercase;
     color: #00cabc;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    table {
+        width: 95%;
+    }
+
+    th, td {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .schedule-container h2 {
+        font-size: 22px;
+    }
+
+    .record-container h2 {
+        font-size: 22px;
+    }
 }
