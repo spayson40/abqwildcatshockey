@@ -15,9 +15,14 @@ const Player = mongoose.model('Player', RosterSchema, 'roster');
 
 // GET all players
 router.get('/', async (req, res) => {
-  const players = await Player.find();
-  res.json(players);
-});
+    try {
+      const players = await Roster.find().sort({ playernumber: 1 }); // ascending
+      res.json(players);
+    } catch (err) {
+      console.error('Error fetching roster:', err);
+      res.status(500).json({ message: 'Failed to load roster' });
+    }
+  });  
 
 // POST new player
 router.post('/', async (req, res) => {

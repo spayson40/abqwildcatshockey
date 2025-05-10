@@ -17,14 +17,14 @@ const Schedule = mongoose.model('Schedule', ScheduleSchema);
 
 // GET /api/schedule - Fetch all games
 router.get('/', async (req, res) => {
-  try {
-    const games = await Schedule.find();
-    res.json(games);
-  } catch (err) {
-    console.error('Error fetching schedule:', err);
-    res.status(500).json({ message: 'Failed to load schedule' });
-  }
-});
+    try {
+      const games = await Schedule.find().sort({ date: 1 }); // ascending
+      res.json(games);
+    } catch (err) {
+      console.error('Error fetching schedule:', err);
+      res.status(500).json({ message: 'Failed to load schedule' });
+    }
+  });  
 
 // POST /api/schedule - Add a new game
 router.post('/', async (req, res) => {
