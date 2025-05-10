@@ -1,94 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Albuquerque Wildcats - Roster</title>
     <link rel="stylesheet" href="styles/homestyles.css">
     <link rel="stylesheet" href="styles/rostertable.css">
 </head>
 <body>
 
-    <!-- Sidebar Menu -->
-    <div id="menu">
-        <ul id="menu-items">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="roster.html">Roster</a></li>
-            <li><a href="schedule.html">Schedule</a></li>
-            <li><a href="staff.html">Staff</a></li>
-            <li><a href="admin-login.html">Admin Login</a></li>
-        </ul>
+<!-- Sidebar Menu -->
+<div id="menu">
+    <ul id="menu-items">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="roster.html">Roster</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="staff.html">Staff</a></li>
+        <li><a href="admin-login.html">Admin Login</a></li>
+    </ul>
+</div>
+
+<header>
+    <div class="menu-button" onclick="toggleMenu()">
+        <img src="photos/hamburger.webp" alt="Menu Button">
     </div>
-  
-    <header>
-        <div class="menu-button" onclick="toggleMenu()">
-            <img src="photos/hamburger.webp" alt="Menu Button">
-        </div>
-        Home
-        <img src="photos/wc-logo.png" alt="Wildcats Logo" class="header-logo">
-    </header>
+    Roster
+    <img src="photos/wc-logo.png" alt="Wildcats Logo" class="header-logo">
+</header>
 
-    <!-- Roster Table -->
-    <div class="roster-container">
-        <h2>Team Roster</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Picture</th>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Hometown</th>
-                    <th>Birth Year</th>
-                </tr>
-            </thead>
-            <tbody id="roster-table-body">
-                <!-- Data will be loaded from the database -->
-            </tbody>
-        </table>
+<!-- Roster Table -->
+<div class="roster-container">
+    <h2>Team Roster</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Picture</th>
+                <th>#</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Hometown</th>
+                <th>Birth Year</th>
+            </tr>
+        </thead>
+        <tbody id="roster-table-body">
+            <!-- Data will be loaded from the database -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('expanded');
+    }
+
+    async function loadRoster() {
+        try {
+            const res = await fetch('/api/roster');
+            const players = await res.json();
+            const tbody = document.getElementById('roster-table-body');
+            tbody.innerHTML = '';
+
+            players.forEach(player => {
+                const photoSrc = player.photo ? player.photo : 'photos/nophoto.jpg';
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><img src="${photoSrc}" alt="${player.name}"></td>
+                    <td>${player.playernumber}</td>
+                    <td>${player.name}</td>
+                    <td>${player.position || ''}</td>
+                    <td>${player.hometown}</td>
+                    <td>${player.birthyear}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        } catch (error) {
+            console.error('Error loading roster:', error);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadRoster);
+</script>
+
+<!-- Footer -->
+<footer>
+    <p>Wildcats Hockey</p>
+    <div class="social-links">
+        <a href="socialmedia.html" target="_blank">Instagram</a>
+        <a href="socialmedia.html" target="_blank">X</a>
+        <a href="socialmedia.html" target="_blank">Facebook</a>
     </div>
-
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.classList.toggle('expanded');
-        }
-
-        async function loadRoster() {
-            try {
-                const res = await fetch('/api/roster');
-                const players = await res.json();
-                const tbody = document.getElementById('roster-table-body');
-                tbody.innerHTML = '';
-
-                players.forEach(player => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td><img src="${player.photo || 'photos/nophoto.jpg'}" alt="${player.name}"></td>
-                        <td>${player.playernumber}</td>
-                        <td>${player.name}</td>
-                        <td>${player.hometown}</td>
-                        <td>${player.birthyear}</td>
-                    `;
-                    tbody.appendChild(row);
-                });
-            } catch (error) {
-                console.error('Error loading roster:', error);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', loadRoster);
-    </script>
-
-    <!-- Footer -->
-    <footer>
-        <p>Wildcats Hockey</p>
-        <div class="social-links">
-            <a href="socialmedia.html" target="_blank">Instagram</a>
-            <a href="socialmedia.html" target="_blank">X</a>
-            <a href="socialmedia.html" target="_blank">Facebook</a>
-        </div>
-        <img src="photos/wc-logo.png" alt="Wildcats Logo" class="footer-logo">
-    </footer>
+    <img src="photos/wc-logo.png" alt="Wildcats Logo" class="footer-logo">
+</footer>
 
 </body>
 </html>
+
