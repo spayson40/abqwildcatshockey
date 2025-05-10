@@ -1,7 +1,9 @@
+// server/routes/rosterRoutes.js
 const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
 
+// Define the schema
 const RosterSchema = new mongoose.Schema({
   playernumber: Number,
   position: String,
@@ -11,18 +13,19 @@ const RosterSchema = new mongoose.Schema({
   photo: String
 });
 
+// Model using the 'roster' collection
 const Player = mongoose.model('Player', RosterSchema, 'roster');
 
-// GET all players
+// GET all players, sorted by playernumber
 router.get('/', async (req, res) => {
-    try {
-      const players = await Roster.find().sort({ playernumber: 1 }); // ascending
-      res.json(players);
-    } catch (err) {
-      console.error('Error fetching roster:', err);
-      res.status(500).json({ message: 'Failed to load roster' });
-    }
-  });  
+  try {
+    const players = await Player.find().sort({ playernumber: 1 }); // sort ascending
+    res.json(players);
+  } catch (err) {
+    console.error('Error fetching roster:', err);
+    res.status(500).json({ message: 'Failed to load roster' });
+  }
+});
 
 // POST new player
 router.post('/', async (req, res) => {
