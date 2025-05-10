@@ -11,9 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
     players.forEach(player => {
       const row = document.createElement("tr");
       row.innerHTML = `
-        <td>${player.photo || 'nophoto.jpg'}</td> <!-- Only show filename -->
+        <td>${player.photo || 'nophoto.jpg'}</td>
         <td>${player.playernumber}</td>
         <td>${player.name}</td>
+        <td>${player.position || ''}</td>
         <td>${player.hometown}</td>
         <td>${player.birthyear}</td>
         <td>
@@ -31,9 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const data = {
       playernumber: form.playerNumber.value,
       name: form.playerName.value,
+      position: form.playerPosition.value,
       hometown: form.playerHometown.value,
       birthyear: form.playerBirthYear.value,
-      photo: form.playerPicture.value || 'nophoto.jpg' // Save filename
+      photo: form.playerPicture.value || 'nophoto.jpg'
     };
 
     if (editingId) {
@@ -60,11 +62,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const players = await res.json();
     const player = players.find(p => p._id === id);
     if (!player) return;
+
     form.playerNumber.value = player.playernumber;
     form.playerName.value = player.name;
+    form.playerPosition.value = player.position || '';
     form.playerHometown.value = player.hometown;
     form.playerBirthYear.value = player.birthyear;
-    form.playerPicture.value = player.photo || '';  // Prefill filename
+    form.playerPicture.value = player.photo || '';
     editingId = id;
   };
 
